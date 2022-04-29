@@ -1,0 +1,89 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+directive @upper on FIELD_DEFINITION
+
+type Favorite {
+  _id: ID!
+  movie: ID!
+  user: ID!
+}
+
+type LoginResult {
+  token: String!
+  user: User!
+}
+
+type MostFavoritedResult {
+  _id: ID!
+  count: Float!
+  movie: ID!
+  movieDetail: [Movie!]
+  user: ID!
+}
+
+type Movie {
+  _id: ID!
+  adult: Boolean!
+  description: String
+  imageUrl: String
+  language: String!
+  movieId: Float!
+  rating: Float!
+  tagline: String
+  time: Float
+  title: String!
+  video: Boolean!
+  videoUrls: [String!]!
+}
+
+type Mutation {
+  createFavorite(movieId: String!): Favorite!
+  createQuote(input: QuoteCreateInput!): Quote!
+  createUser(input: UserCreateInput!): User!
+  movie(movieId: String!): Movie!
+  removeFavorite(movieId: String!): Boolean!
+  removeMyAccount: Boolean!
+  removeQuote(quoteId: String!): Boolean!
+}
+
+type Query {
+  login(email: String!, password: String!): LoginResult!
+  mostFavorited: [MostFavoritedResult!]!
+  movieQuotes(movieId: String!): [Quote!]!
+  myFavorites: [Movie!]!
+  searchMovies(query: String!): [Movie!]!
+  users: [User!]!
+}
+
+type Quote {
+  _id: ID!
+  movie: String!
+  quote: String!
+  time: Float!
+  user: String!
+}
+
+input QuoteCreateInput {
+  movie: ID!
+  quote: String!
+  time: Float!
+}
+
+type User {
+  _id: String!
+  email: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+  phone: String!
+}
+
+input UserCreateInput {
+  email: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+  phone: String!
+}
